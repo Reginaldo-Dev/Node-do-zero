@@ -1,18 +1,24 @@
-// import {createServer} from 'node:http'
-
-// const server = createServer((req, res) => {
-//    res.write('seja bem vindo')
-
-//    return res.end()
-// })
-
-// server.listen(3333)
-
 import {fastify} from 'fastify'
 
+import {}
 const server = fastify()
 
-server.get('/', () => {
+server.post('/videos', () => {
    return 'Sejam Bem Vindos'
 })
 
+server.get('/videos', () => {
+   return 'Conheça o Node no Back end'
+})
+
+server.put('/videos/:id', () => {
+   return 'Hello Node.js'
+})
+
+server.delete('/vídeos/:id', () => {
+   return 'Hello Node.js'
+})
+
+server.listen( {
+   port: 3333,
+})
