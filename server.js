@@ -5,8 +5,6 @@ const server = fastify()
 
 const database = new DatabaseMemory()
 
-// Request Body => enviando o corpo de uma requisição
-
 server.post('/videos', (request, reply) => {
    const {title, description, duration, } = request.body
    
@@ -19,11 +17,12 @@ server.post('/videos', (request, reply) => {
    return reply.status(201).send()
 })
 
-server.get('/videos', () => {
-   const videos = database.list()
-
-   console.log(videos)
+server.get('/videos', (requery) => {
    
+   const search = requery.query.search
+
+   const videos = database.list(search)
+     
    return videos
 })
 
